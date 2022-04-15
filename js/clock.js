@@ -1,7 +1,7 @@
 const clock = document.querySelector("h2#clock");
 
 function getClock() {
-  //[quiz] 'Date() 생성자'에 대하여 검색하기
+  //[quiz] 'Date() 생성자'에 대하여 검색하기 
   const date = ___ _____();
   const hours = String(date.getHours()).padStart(2, "0");
   const minutes = String(date.getMinutes()).padStart(2, "0");
