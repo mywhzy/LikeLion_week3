@@ -8,5 +8,5 @@ const bgImage = document.createElement("img");
 
 bgImage.src = `img/${chosenImage}`;
 
-//[quiz] 'append()' vs 'appendChild()' 둘 다 시도해보기
+//[quiz] 'append()' vs 'appendChild()' 둘 다 시도해보기 
 document.body._____(bgImage);
