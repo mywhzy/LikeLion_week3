@@ -42,9 +42,9 @@ const quotes = [
   },
 ];
 
-//[quiz] css의 가상클래스를 참고하여 id="quote"의 처음 글자 요소 가져오기
+//[quiz] 'css 가상클래스'를 참고하여 id="quote"의 처음 글자 요소 가져오기
 const quote = document.querySelector("_quote ___:_____-_____");
-//[quiz] css의 가상클래스를 참고하여 id="quote"의 마지막 글자 요소 가져오기
+//[quiz] 'css 가상클래스'를 참고하여 id="quote"의 마지막 글자 요소 가져오기
 const author = document.querySelector("_quote ___:_____-_____");
 //todaysQuote에 인용구를 랜덤으로 선언
 const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
