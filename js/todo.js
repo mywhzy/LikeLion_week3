@@ -34,11 +34,10 @@ function deleteToDo(event) {
 
 function completedTodo(event){
   const li = event.target.parentElement;
-  const checkbox = document.querySelector("#todo-list input");
-  
-  //is_checked는 checkbox의 상태에 따라 boolean 값을 갖게 됨
-  const is_checked = checkbox.checked;
 
+  //is_checked는 checkbox의 상태에 따라 boolean 값을 갖게 됨
+  const is_checked = li.firstChild.checked;
+  
   //[quiz] 체크 박스가 체크가 되었다면 if 부분이 실행, 아니면 else 부분 실행
   if (is_checked === ___){
     li.style.textDecoration="line-through";
@@ -47,6 +46,7 @@ function completedTodo(event){
     li.style.textDecoration="solid";
     li.style.color="black";
   }
+  saveToDos();
 }
 
 function paintToDo(newTodo) {
