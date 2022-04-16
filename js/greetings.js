@@ -1,6 +1,7 @@
-//[quiz] 'querySelector' vs 'getElementById' 참고하여 빈칸 채우기
-const loginForm = document._____("#login-form");
-const loginInput = document._____("#login-form input");
+//querySelector : 구체적인 그룹과 일치하는 첫번째 엘리먼트 반환
+//getElementById : id를 통해 엘리먼트 반환
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 
 //문자열을 할당할 때는 대문자 변수명을 권장
@@ -11,14 +12,14 @@ function onLoginSubmit(event) {
   //이름을 제출했을때 새로고침을 방지
   event.preventDefault();
 
-  //[quiz] 'js classList'를 참고하여 loginForm에 hidden class를 추가하기
-  loginForm.classList.___(HIDDEN_CLASSNAME);
+  //'js classList'를 참고하여 loginForm에 hidden class를 추가하기
+  loginForm.classList.add(HIDDEN_CLASSNAME);
 
   //loginInput의 값을 username이라는 변수에 할당
   const username = loginInput.value;
 
-  //[quiz] 값 추가 : 'localStorage'를 참고하여 값 추가하기
-  localStorage._____(USERNAME_KEY, username);
+  //'localStorage'를 참고하여 값 추가하기
+  localStorage.setItem(USERNAME_KEY, username);
   paintGreetings(username);
 }
 
@@ -33,8 +34,8 @@ function paintGreetings(username) {
   //유저의 이름을 받은 후, id='greeting'을 가지고 있는 h1 안에 작성
   greeting.innerText = `Hello ${username}`;
 
-  //[quiz] 'js classList'를 참고하여 id='greeting'을 가지고 있는 h1에 hidden class를 삭제하기
-  _____.classList.remove(HIDDEN_CLASSNAME);
+  //'js classList'를 참고하여 greeting에 hidden class를 삭제하기
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
 //localStorage에 있는 값을 불러와  savedUsername에 할당
