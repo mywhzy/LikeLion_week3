@@ -32,18 +32,40 @@ function deleteToDo(event) {
   saveToDos();
 }
 
+function completedTodo(event){
+  const li = event.target.parentElement;
+  const checkbox = document.querySelector("#todo-list input");
+  
+  //is_checked는 checkbox의 상태에 따라 boolean 값을 갖게 됨
+  const is_checked = checkbox.checked;
+
+  //[quiz] 체크 박스가 체크가 되었다면 if 부분이 실행, 아니면 else 부분 실행
+  if (is_checked === ___){
+    li.style.textDecoration="line-through";
+    li.style.color="grey";
+  }else{
+    li.style.textDecoration="solid";
+    li.style.color="black";
+  }
+}
+
 function paintToDo(newTodo) {
   //[quiz] appendChild() vs createElement() 비교하고 채워놓기
   const li = document.__________("li");
   li.id = newTodo.id;
+  const checkbox = document.__________("input");
+  checkbox.type="checkbox";
   const span = document.__________("span");
   span.innerText = newTodo.text;
   const button = document.__________("button");
   button.innerText = "❌";
 
-  //버튼을 클릭시에 deleteToDo 발생. deleteToDo를 안쓰는 이유는??
+  //버튼을 클릭시에 deleteToDo 발생. deleteToDo()로 쓴다면
+  //조건 충족 여부와 상관없이 함수 실행
   button.addEventListener("click", deleteToDo);
+  checkbox.addEventListener("click", completedTodo);
 
+  li.appendChild(checkbox);
   li.appendChild(span);
   li.appendChild(button);
   toDoList.appendChild(li);
