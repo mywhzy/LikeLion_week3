@@ -9,6 +9,7 @@ const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
 function onLoginSubmit(event) {
+
   //이름을 제출했을때 새로고침을 방지
   event.preventDefault();
 
@@ -31,6 +32,7 @@ function deleteSubmit(event) {
 }
 
 function paintGreetings(username) {
+  
   //유저의 이름을 받은 후, id='greeting'을 가지고 있는 h1 안에 작성
   greeting.innerText = `Hello ${username}`;
 
