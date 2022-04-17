@@ -21,30 +21,28 @@ function saveToDos() {
 }
 
 function deleteToDo(event) {
-  //event.target.parentElement -> 부모 속성에 이벤트가 발생
-  //어느 항목을 삭제할 것인지 알 수 있게 된다
+  //
   const li = event.target.parentElement;
   li.remove();
 
-  //1. filter(배열함수) : ()안의 조건에 맞는 값들만 남겨놓음
-  //2. 조건은 지우고자 하는 toDO와 다른 id를 갖고 있는 li들을 남겨놓겠다는 조건
+  //
   toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
   saveToDos();
 }
 
-function completedTodo(event){
+function completedTodo(event) {
   const li = event.target.parentElement;
 
   //is_checked는 checkbox의 상태에 따라 boolean 값을 갖게 됨
   const is_checked = li.firstChild.checked;
-  
+
   //[quiz] 체크 박스가 체크가 되었다면 if 부분이 실행, 아니면 else 부분 실행
-  if (is_checked === ___){
-    li.style.textDecoration="line-through";
-    li.style.color="grey";
-  }else{
-    li.style.textDecoration="solid";
-    li.style.color="black";
+  if (is_checked === ___) {
+    li.style.textDecoration = "line-through";
+    li.style.color = "grey";
+  } else {
+    li.style.textDecoration = "solid";
+    li.style.color = "black";
   }
   saveToDos();
 }
@@ -54,14 +52,13 @@ function paintToDo(newTodo) {
   const li = document.__________("li");
   li.id = newTodo.id;
   const checkbox = document.__________("input");
-  checkbox.type="checkbox";
+  checkbox.type = "checkbox";
   const span = document.__________("span");
   span.innerText = newTodo.text;
   const button = document.__________("button");
   button.innerText = "❌";
 
-  //버튼을 클릭시에 deleteToDo 발생. deleteToDo()로 쓴다면
-  //조건 충족 여부와 상관없이 함수 실행
+  //
   button.addEventListener("click", deleteToDo);
   checkbox.addEventListener("click", completedTodo);
 
@@ -72,7 +69,7 @@ function paintToDo(newTodo) {
 }
 
 function handleToDoSubmit(event) {
-  //제출시에 새로고침 방지
+  //
   event.preventDefault();
 
   //[quiz] toDoInput의 값을 불러와 newTodo에 할당.
@@ -108,6 +105,6 @@ if (savedToDos !== null) {
   //toDos에 이를 할당,
   toDos = parsedToDos;
 
-  //각각을 paintToDo의 매개변수에 넣어서 실행 
+  //
   parsedToDos.forEach(paintToDo);
 }
