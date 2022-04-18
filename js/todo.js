@@ -57,11 +57,8 @@ function paintToDo(newTodo) {
   span.innerText = newTodo.text;
   const button = document.__________("button");
   button.innerText = "❌";
-
-  //
   button.addEventListener("click", deleteToDo);
   checkbox.addEventListener("click", completedTodo);
-
   li.appendChild(checkbox);
   li.appendChild(span);
   li.appendChild(button);
@@ -99,7 +96,7 @@ const savedToDos = localStorage._____(TODOS_KEY);
 //savedToDos가 localStorage에 존재한다면,
 if (savedToDos !== null) {
 
-  //불러온 값을 json객체로 변환,
+  //
   const parsedToDos = JSON.parse(savedToDos);
 
   //toDos에 이를 할당,
