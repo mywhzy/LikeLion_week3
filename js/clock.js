@@ -11,5 +11,4 @@ function getClock() {
 }
 
 getClock();
-//[quiz] 1초마다 함수를 실행할 수 있도록 숫자 넣기
-setInterval(getClock, _____);
+setInterval(getClock, 1000);
