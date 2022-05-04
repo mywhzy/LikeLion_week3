@@ -16,16 +16,16 @@ let toDos = [];
 
 function saveToDos() {
   //[quiz] 값 추가 : 'localStorage'를 참고하여 값 추가하기
-  //값을 문자열 객체로 저장하기 위하여 JSON.stringify 사용
-  localStorage._____(TODOS_KEY, JSON.stringify(toDos));
+  //값을 문자열 객체로 저장하기 위하여 JSON.stringify 사용 +)localstorage는 array저장 불가 text만 저장가능
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
 function deleteToDo(event) {
-  //
+  //(X버튼 눌렀을 때 그에 해당하는) 부모요소(toDo내용) 삭제하기
   const li = event.target.parentElement;
   li.remove();
 
-  //
+  //삭제된 toDo내용 localStroage에도 적용하기
   toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
   saveToDos();
 }
@@ -37,7 +37,7 @@ function completedTodo(event) {
   const is_checked = li.firstChild.checked;
 
   //[quiz] 체크 박스가 체크가 되었다면 if 부분이 실행, 아니면 else 부분 실행
-  if (is_checked === ___) {
+  if (is_checked === true) {
     li.style.textDecoration = "line-through";
     li.style.color = "grey";
   } else {
@@ -49,13 +49,13 @@ function completedTodo(event) {
 
 function paintToDo(newTodo) {
   //[quiz] appendChild() vs createElement() 비교하고 채워놓기
-  const li = document.__________("li");
+  const li = document.createElement("li");
   li.id = newTodo.id;
-  const checkbox = document.__________("input");
+  const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-  const span = document.__________("span");
+  const span = document.createElement("span");
   span.innerText = newTodo.text;
-  const button = document.__________("button");
+  const button = document.createElement("button");
   button.innerText = "❌";
   button.addEventListener("click", deleteToDo);
   checkbox.addEventListener("click", completedTodo);
@@ -66,11 +66,11 @@ function paintToDo(newTodo) {
 }
 
 function handleToDoSubmit(event) {
-  //
+  //input 클릭 시 발생하는 페이지 리로드 이벤트(submit관련 이벤트) 막아주기
   event.preventDefault();
 
   //[quiz] toDoInput의 값을 불러와 newTodo에 할당.
-  const _____ = toDoInput.value;
+  const newTodo = toDoInput.value;
 
   //값을 저장 받은 후, 엔터의 내용들을 지워준다.
   toDoInput.value = "";
@@ -82,7 +82,7 @@ function handleToDoSubmit(event) {
     id: Date.now(),
   };
 
-  //push함수 검색해보기
+  //push함수 검색해보기 / toDos배열에 newTodoObj(새 toDo내용) 추가해준다는 뜻
   toDos.push(newTodoObj);
   paintToDo(newTodoObj);
   saveToDos();
@@ -91,17 +91,20 @@ function handleToDoSubmit(event) {
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
 //[quiz] localStorage에서 값 불러오기
-const savedToDos = localStorage._____(TODOS_KEY);
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
 
 //savedToDos가 localStorage에 존재한다면,
 if (savedToDos !== null) {
 
-  //
+  //이전에 문자열객체로 저장한 saveToDos를 JSON 객체로 저장
   const parsedToDos = JSON.parse(savedToDos);
 
   //toDos에 이를 할당,
   toDos = parsedToDos;
 
-  //
+  //paintToDo를 parsedToDos 요소들에 적용
   parsedToDos.forEach(paintToDo);
 }
+
+//역시 갓민철~~~~~~~ 그때 열심히 달아주신 주석이 이거였구나... 주석의 힘이 컸습니다 감사합니다 최고최고🥰
